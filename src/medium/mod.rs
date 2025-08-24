@@ -1,3 +1,4 @@
+mod daily_temperature;
 mod evaluate_reverse_polish_notation;
 mod group_anagrams;
 mod min_stack;
