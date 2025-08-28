@@ -5,3 +5,4 @@ mod group_anagrams;
 mod min_stack;
 mod top_k_frequent;
 mod two_sum_two_array_sorted;
+mod valid_sudoku;
