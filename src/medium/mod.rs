@@ -3,6 +3,7 @@ mod evaluate_reverse_polish_notation;
 mod generate_parentheses;
 mod group_anagrams;
 mod min_stack;
+mod product_except_self;
 mod top_k_frequent;
 mod two_sum_two_array_sorted;
 mod valid_sudoku;
