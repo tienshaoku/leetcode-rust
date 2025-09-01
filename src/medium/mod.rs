@@ -4,6 +4,7 @@ mod generate_parentheses;
 mod group_anagrams;
 mod min_stack;
 mod product_except_self;
+mod search_a_2d_matrix;
 mod top_k_frequent;
 mod two_sum_two_array_sorted;
 mod valid_sudoku;
