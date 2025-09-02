@@ -1,5 +1,6 @@
 mod daily_temperature;
 mod evaluate_reverse_polish_notation;
+mod find_min_in_rotated_sorted_array;
 mod generate_parentheses;
 mod group_anagrams;
 mod min_stack;
