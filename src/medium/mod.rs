@@ -4,6 +4,7 @@ mod evaluate_reverse_polish_notation;
 mod find_min_in_rotated_sorted_array;
 mod generate_parentheses;
 mod group_anagrams;
+mod length_of_longest_substring;
 mod min_stack;
 mod product_except_self;
 mod search_a_2d_matrix;
