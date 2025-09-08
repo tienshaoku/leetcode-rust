@@ -1,4 +1,4 @@
-use crate::binary_tree::{to_tree, TreeNode};
+use crate::binary_tree::{to_full_tree, TreeNode};
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -21,13 +21,13 @@ mod invert_tree_test {
 
     #[test]
     fn invert_tree_test_1() {
-        let input = to_tree(vec![4, 2, 7, 1, 3, 6, 9]);
-        assert_eq!(invert_tree(input), to_tree(vec![4, 7, 2, 9, 6, 3, 1]));
+        let input = to_full_tree(vec![4, 2, 7, 1, 3, 6, 9]);
+        assert_eq!(invert_tree(input), to_full_tree(vec![4, 7, 2, 9, 6, 3, 1]));
     }
 
     #[test]
     fn invert_tree_test_2() {
-        let input = to_tree(vec![2, 1, 3]);
-        assert_eq!(invert_tree(input), to_tree(vec![2, 3, 1]));
+        let input = to_full_tree(vec![2, 1, 3]);
+        assert_eq!(invert_tree(input), to_full_tree(vec![2, 3, 1]));
     }
 }
