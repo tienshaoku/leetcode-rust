@@ -1,6 +1,7 @@
 mod best_time_to_buy_and_sell_stock;
 mod binary_search;
 mod contain_duplicate;
+mod diameter_of_binary_tree;
 mod fizz_buzz;
 mod invert_binary_tree;
 mod maximum_depth_of_binary_tree;
