@@ -5,6 +5,7 @@ mod diameter_of_binary_tree;
 mod fizz_buzz;
 mod invert_binary_tree;
 mod maximum_depth_of_binary_tree;
+mod missing_number;
 mod n_unique_integers_sum_zero;
 mod same_tree;
 mod two_sum;

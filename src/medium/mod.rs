@@ -9,6 +9,7 @@ mod min_stack;
 mod product_except_self;
 mod search_a_2d_matrix;
 mod search_in_rotated_sorted_array;
+mod ship_within_days;
 mod top_k_frequent;
 mod two_sum_two_array_sorted;
 mod valid_sudoku;
