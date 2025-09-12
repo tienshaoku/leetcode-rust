@@ -1,6 +1,7 @@
 mod balanced_binary_tree;
 mod best_time_to_buy_and_sell_stock;
 mod binary_search;
+mod check_if_array_is_sorted_and_rotated;
 mod contain_duplicate;
 mod diameter_of_binary_tree;
 mod fizz_buzz;
