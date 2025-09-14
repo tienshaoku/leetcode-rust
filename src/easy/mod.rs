@@ -10,6 +10,7 @@ mod maximum_depth_of_binary_tree;
 mod missing_number;
 mod n_unique_integers_sum_zero;
 mod same_tree;
+mod subtree_of_another_tree;
 mod two_sum;
 mod valid_anagram;
 mod valid_palindrome;
