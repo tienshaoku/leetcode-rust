@@ -3,7 +3,7 @@ use std::cell::RefCell;
 use std::cmp::Ordering;
 use std::rc::Rc;
 
-fn lowest_common_ancestor(
+fn lowest_common_ancestor_of_binary_search_tree(
     root: Option<Rc<RefCell<TreeNode>>>,
     p: Option<Rc<RefCell<TreeNode>>>,
     q: Option<Rc<RefCell<TreeNode>>>,
@@ -15,9 +15,9 @@ fn lowest_common_ancestor(
         let q_val = q_node.borrow().val;
 
         if root_val > p_val && root_val > q_val {
-            lowest_common_ancestor(root_ref.left.clone(), p, q)
+            lowest_common_ancestor_of_binary_search_tree(root_ref.left.clone(), p, q)
         } else if root_val < p_val && root_val < q_val {
-            lowest_common_ancestor(root_ref.right.clone(), p, q)
+            lowest_common_ancestor_of_binary_search_tree(root_ref.right.clone(), p, q)
         } else {
             root
         }
@@ -26,7 +26,7 @@ fn lowest_common_ancestor(
     }
 }
 
-fn lowest_common_ancestor_more_complicated(
+fn lowest_common_ancestor_of_binary_search_tree_complicated(
     root: Option<Rc<RefCell<TreeNode>>>,
     p: Option<Rc<RefCell<TreeNode>>>,
     q: Option<Rc<RefCell<TreeNode>>>,
@@ -65,11 +65,11 @@ fn lowest_common_ancestor_more_complicated(
 }
 
 #[cfg(test)]
-mod lowest_common_ancestor_test {
+mod lowest_common_ancestor_of_binary_search_tree_test {
     use super::*;
 
     #[test]
-    fn lowest_common_ancestor_test_1() {
+    fn lowest_common_ancestor_of_binary_search_tree_test_1() {
         let root = to_sparse_tree(vec![
             Some(6),
             Some(2),
@@ -86,11 +86,14 @@ mod lowest_common_ancestor_test {
         let p = root.as_ref().unwrap().borrow().left.clone();
         let q = root.as_ref().unwrap().borrow().right.clone();
 
-        assert_eq!(lowest_common_ancestor(root.clone(), p, q), root.clone());
+        assert_eq!(
+            lowest_common_ancestor_of_binary_search_tree(root.clone(), p, q),
+            root.clone()
+        );
     }
 
     #[test]
-    fn lowest_common_ancestor_test_2() {
+    fn lowest_common_ancestor_of_binary_search_tree_test_2() {
         let root = to_sparse_tree(vec![
             Some(6),
             Some(2),
@@ -107,16 +110,19 @@ mod lowest_common_ancestor_test {
         let p = root.as_ref().unwrap().borrow().left.clone();
         let q = p.as_ref().unwrap().borrow().right.clone();
 
-        assert_eq!(lowest_common_ancestor(root, p.clone(), q), p.clone());
+        assert_eq!(
+            lowest_common_ancestor_of_binary_search_tree(root, p.clone(), q),
+            p.clone()
+        );
     }
 
     #[test]
-    fn lowest_common_ancestor_test_3() {
+    fn lowest_common_ancestor_of_binary_search_tree_test_3() {
         let root = to_sparse_tree(vec![Some(2), Some(1)]);
         let q = root.as_ref().unwrap().borrow().left.clone();
 
         assert_eq!(
-            lowest_common_ancestor(root.clone(), root.clone(), q),
+            lowest_common_ancestor_of_binary_search_tree(root.clone(), root.clone(), q),
             root.clone()
         );
     }
