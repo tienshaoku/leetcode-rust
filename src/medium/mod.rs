@@ -1,3 +1,4 @@
+mod binary_tree_level_order_traversal;
 mod container_with_the_most_water;
 mod daily_temperature;
 mod evaluate_reverse_polish_notation;
