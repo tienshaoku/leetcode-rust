@@ -4,6 +4,7 @@ mod daily_temperature;
 mod evaluate_reverse_polish_notation;
 mod find_min_in_rotated_sorted_array;
 mod generate_parentheses;
+mod good_nodes;
 mod group_anagrams;
 mod length_of_longest_substring;
 mod lowest_common_ancestor_of_binary_search_tree;
