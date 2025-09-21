@@ -6,6 +6,7 @@ mod find_min_in_rotated_sorted_array;
 mod generate_parentheses;
 mod good_nodes;
 mod group_anagrams;
+mod is_valid_bst;
 mod length_of_longest_substring;
 mod lowest_common_ancestor_of_binary_search_tree;
 mod lowest_common_ancestor_of_binary_tree;
