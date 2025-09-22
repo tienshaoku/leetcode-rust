@@ -1,4 +1,5 @@
 mod binary_tree_level_order_traversal;
+mod construct_bt_from_preorder_and_inorder;
 mod container_with_the_most_water;
 mod daily_temperature;
 mod evaluate_reverse_polish_notation;
@@ -7,6 +8,7 @@ mod generate_parentheses;
 mod good_nodes;
 mod group_anagrams;
 mod is_valid_bst;
+mod kth_smallest;
 mod length_of_longest_substring;
 mod lowest_common_ancestor_of_binary_search_tree;
 mod lowest_common_ancestor_of_binary_tree;
