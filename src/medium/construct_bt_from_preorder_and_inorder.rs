@@ -6,23 +6,37 @@ fn construct_bt_from_preorder_and_inorder(
     preorder: Vec<i32>,
     inorder: Vec<i32>,
 ) -> Option<Rc<RefCell<TreeNode>>> {
-    let mut root = TreeNode::new(preorder[0]);
-    let index = inorder.iter().position(|&x| x == preorder[0]).unwrap();
-
-    let inorder_left = inorder[0..index].to_vec();
-    let inorder_right = inorder[index + 1..].to_vec();
-
-    let preorder_left = preorder[1..1 + inorder_left.len()].to_vec();
-    let preorder_right = preorder[1 + inorder_left.len()..].to_vec();
-
-    if inorder_left.len() > 0 {
-        root.left = construct_bt_from_preorder_and_inorder(preorder_left, inorder_left);
-    }
-    if inorder_right.len() > 0 {
-        root.right = construct_bt_from_preorder_and_inorder(preorder_right, inorder_right);
+    use std::collections::HashMap;
+    let mut map = HashMap::new();
+    for i in 0..inorder.len() {
+        map.insert(inorder[i], i);
     }
 
-    Some(Rc::new(RefCell::new(root)))
+    fn traverse(
+        preorder: &[i32],
+        inorder: &[i32],
+        map: &HashMap<i32, usize>,
+        offset: usize,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
+        let mut root = TreeNode::new(preorder[0]);
+        let pos = *map.get(&preorder[0]).unwrap() - offset;
+
+        let inorder_left = &inorder[0..pos];
+        let inorder_right = &inorder[pos + 1..];
+
+        let preorder_left = &preorder[1..1 + inorder_left.len()];
+        let preorder_right = &preorder[1 + inorder_left.len()..];
+
+        if inorder_left.len() > 0 {
+            root.left = traverse(preorder_left, inorder_left, map, offset);
+        }
+        if inorder_right.len() > 0 {
+            root.right = traverse(preorder_right, inorder_right, map, offset + pos + 1);
+        }
+
+        Some(Rc::new(RefCell::new(root)))
+    }
+    traverse(&preorder, &inorder, &map, 0)
 }
 
 //        3
