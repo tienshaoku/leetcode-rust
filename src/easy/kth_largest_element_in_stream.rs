@@ -51,11 +51,11 @@ impl KthLargest {
 // }
 
 #[cfg(test)]
-mod kth_largest_test {
+mod kth_largest_element_in_stream_test {
     use super::*;
 
     #[test]
-    fn kth_largest_test_1() {
+    fn kth_largest_element_in_stream_test_1() {
         let mut kth = KthLargest::new(3, vec![4, 5, 8, 2]);
         assert_eq!(kth.add(3), 4);
         assert_eq!(kth.add(5), 5);
@@ -65,7 +65,7 @@ mod kth_largest_test {
     }
 
     #[test]
-    fn kth_largest_test_2() {
+    fn kth_largest_element_in_stream_test_2() {
         let mut kth = KthLargest::new(4, vec![7, 7, 7, 7, 8, 3]);
         assert_eq!(kth.add(2), 7);
         assert_eq!(kth.add(10), 7);
@@ -74,7 +74,7 @@ mod kth_largest_test {
     }
 
     #[test]
-    fn kth_largest_test_3() {
+    fn kth_largest_element_in_stream_test_3() {
         let mut kth = KthLargest::new(1, vec![]);
         assert_eq!(kth.add(-3), -3);
         assert_eq!(kth.add(-2), -2);
@@ -84,7 +84,7 @@ mod kth_largest_test {
     }
 
     #[test]
-    fn kth_largest_test_4() {
+    fn kth_largest_element_in_stream_test_4() {
         let mut kth = KthLargest::new(2, vec![0]);
         assert_eq!(kth.add(-1), -1);
         assert_eq!(kth.add(1), 0);
@@ -94,7 +94,7 @@ mod kth_largest_test {
     }
 
     #[test]
-    fn kth_largest_test_5() {
+    fn kth_largest_element_in_stream_test_5() {
         let mut kth = KthLargest::new(3, vec![5, -1]);
         assert_eq!(kth.add(2), -1);
         assert_eq!(kth.add(1), 1);

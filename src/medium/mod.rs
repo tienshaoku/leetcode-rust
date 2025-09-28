@@ -10,6 +10,7 @@ mod generate_parentheses;
 mod good_nodes;
 mod group_anagrams;
 mod is_valid_bst;
+mod kth_largest_element_in_array;
 mod kth_smallest;
 mod length_of_longest_substring;
 mod lowest_common_ancestor_of_binary_search_tree;
