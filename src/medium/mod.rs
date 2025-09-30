@@ -24,6 +24,7 @@ mod search_in_rotated_sorted_array;
 mod ship_within_days;
 mod subsets;
 mod subsets_two;
+mod task_scheduler;
 mod top_k_frequent;
 mod two_sum_two_array_sorted;
 mod valid_sudoku;
