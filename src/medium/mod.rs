@@ -17,6 +17,7 @@ mod length_of_longest_substring;
 mod lowest_common_ancestor_of_binary_search_tree;
 mod lowest_common_ancestor_of_binary_tree;
 mod min_stack;
+mod permutations;
 mod product_except_self;
 mod right_side_view;
 mod search_a_2d_matrix;
