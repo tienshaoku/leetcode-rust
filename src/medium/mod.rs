@@ -1,5 +1,6 @@
 mod binary_tree_level_order_traversal;
 mod combination_sum;
+mod combination_sum_two;
 mod construct_bst_from_preorder;
 mod construct_bt_from_inorder_and_postorder;
 mod construct_bt_from_preorder_and_inorder;

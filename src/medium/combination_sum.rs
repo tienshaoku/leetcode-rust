@@ -1,3 +1,5 @@
+use crate::vector::normalise;
+
 fn combination_sum(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
     fn traverse(
         candidates: &Vec<i32>,
@@ -67,14 +69,6 @@ fn combination_sum_duplicates(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>
 #[cfg(test)]
 mod combination_sum_test {
     use super::*;
-
-    fn normalise(mut v: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
-        for inner in v.iter_mut() {
-            inner.sort();
-        }
-        v.sort();
-        v
-    }
 
     #[test]
     fn combination_sum_test_1() {

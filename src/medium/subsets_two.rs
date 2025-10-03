@@ -1,3 +1,5 @@
+use crate::vector::normalise;
+
 fn subsets_two(nums: Vec<i32>) -> Vec<Vec<i32>> {
     use std::collections::HashSet;
 
@@ -18,14 +20,6 @@ fn subsets_two(nums: Vec<i32>) -> Vec<Vec<i32>> {
 #[cfg(test)]
 mod subsets_two_test {
     use super::*;
-
-    fn normalise(mut v: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
-        for inner in v.iter_mut() {
-            inner.sort();
-        }
-        v.sort();
-        v
-    }
 
     #[test]
     fn subsets_two_test_1() {
