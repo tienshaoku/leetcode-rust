@@ -9,6 +9,7 @@ mod fizz_buzz;
 mod invert_binary_tree;
 mod kth_largest_element_in_stream;
 mod maximum_depth_of_binary_tree;
+mod min_cost_climbing_stairs;
 mod missing_number;
 mod n_unique_integers_sum_zero;
 mod same_tree;
