@@ -11,6 +11,7 @@ mod find_min_in_rotated_sorted_array;
 mod generate_parentheses;
 mod good_nodes;
 mod group_anagrams;
+mod house_robber;
 mod is_valid_bst;
 mod k_closest;
 mod kth_largest_element_in_array;
