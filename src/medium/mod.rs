@@ -12,6 +12,7 @@ mod generate_parentheses;
 mod good_nodes;
 mod group_anagrams;
 mod house_robber;
+mod house_robber_two;
 mod is_valid_bst;
 mod k_closest;
 mod kth_largest_element_in_array;
