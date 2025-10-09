@@ -8,6 +8,7 @@ mod diameter_of_binary_tree;
 mod fizz_buzz;
 mod invert_binary_tree;
 mod kth_largest_element_in_stream;
+mod longest_palindrome;
 mod maximum_depth_of_binary_tree;
 mod min_cost_climbing_stairs;
 mod missing_number;
