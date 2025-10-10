@@ -6,6 +6,7 @@ mod climb_stairs;
 mod contain_duplicate;
 mod diameter_of_binary_tree;
 mod fizz_buzz;
+mod happy_number;
 mod invert_binary_tree;
 mod kth_largest_element_in_stream;
 mod longest_palindrome;
