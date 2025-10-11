@@ -9,6 +9,7 @@ mod fizz_buzz;
 mod happy_number;
 mod invert_binary_tree;
 mod kth_largest_element_in_stream;
+mod length_of_last_word;
 mod longest_palindrome;
 mod maximum_depth_of_binary_tree;
 mod min_cost_climbing_stairs;
