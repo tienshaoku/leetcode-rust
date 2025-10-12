@@ -11,6 +11,7 @@ mod invert_binary_tree;
 mod kth_largest_element_in_stream;
 mod length_of_last_word;
 mod longest_palindrome;
+mod majority_element;
 mod maximum_depth_of_binary_tree;
 mod min_cost_climbing_stairs;
 mod missing_number;
