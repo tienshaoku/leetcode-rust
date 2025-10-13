@@ -35,3 +35,4 @@ mod task_scheduler;
 mod top_k_frequent;
 mod two_sum_two_array_sorted;
 mod valid_sudoku;
+mod word_search;
