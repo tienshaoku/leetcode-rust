@@ -1,11 +1,13 @@
 fn min_cost_climbing_stairs(cost: Vec<i32>) -> i32 {
-    let mut arr = vec![0; cost.len() + 1];
-    arr[cost.len() - 1] = cost[cost.len() - 1];
-
-    for i in (0..=(cost.len() - 2)).rev() {
-        arr[i] = cost[i] + arr[i + 1].min(arr[i + 2]);
+    let mut res = vec![0; cost.len()];
+    for i in (0..cost.len()).rev() {
+        if i >= cost.len() - 2 {
+            res[i] = cost[i];
+            continue;
+        }
+        res[i] = cost[i] + res[i + 1].min(res[i + 2]);
     }
-    arr[0].min(arr[1])
+    res[0].min(res[1])
 }
 
 #[cfg(test)]
