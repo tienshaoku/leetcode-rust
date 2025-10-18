@@ -28,6 +28,7 @@ mod palindrome_partitioning;
 mod permutations;
 mod product_except_self;
 mod right_side_view;
+mod rotate_image;
 mod search_a_2d_matrix;
 mod search_in_rotated_sorted_array;
 mod ship_within_days;
