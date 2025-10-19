@@ -18,6 +18,7 @@ mod maximum_wealth;
 mod min_cost_climbing_stairs;
 mod missing_number;
 mod n_unique_integers_sum_zero;
+mod number_of_steps;
 mod same_tree;
 mod subtree_of_another_tree;
 mod two_sum;
