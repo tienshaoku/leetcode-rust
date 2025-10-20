@@ -8,6 +8,7 @@ mod contain_duplicate;
 mod diameter_of_binary_tree;
 mod fizz_buzz;
 mod happy_number;
+mod highest_altitude;
 mod invert_binary_tree;
 mod kth_largest_element_in_stream;
 mod length_of_last_word;
