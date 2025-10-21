@@ -20,6 +20,7 @@ mod kth_largest_element_in_array;
 mod kth_smallest;
 mod length_of_longest_substring;
 mod letter_case_permutation;
+mod letter_combinations;
 mod longest_palindrome_substring;
 mod lowest_common_ancestor_of_binary_search_tree;
 mod lowest_common_ancestor_of_binary_tree;
