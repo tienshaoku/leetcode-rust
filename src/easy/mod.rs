@@ -16,6 +16,7 @@ mod longest_palindrome;
 mod majority_element;
 mod maximum_depth_of_binary_tree;
 mod maximum_wealth;
+mod merge_sorted_array;
 mod min_cost_climbing_stairs;
 mod missing_number;
 mod n_unique_integers_sum_zero;
