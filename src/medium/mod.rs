@@ -25,6 +25,7 @@ mod longest_palindrome_substring;
 mod lowest_common_ancestor_of_binary_search_tree;
 mod lowest_common_ancestor_of_binary_tree;
 mod min_stack;
+mod number_of_islands;
 mod palindrome_partitioning;
 mod permutations;
 mod product_except_self;
