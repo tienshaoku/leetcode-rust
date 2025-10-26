@@ -7,6 +7,7 @@ mod climb_stairs;
 mod contain_duplicate;
 mod diameter_of_binary_tree;
 mod fizz_buzz;
+mod guess_number;
 mod happy_number;
 mod highest_altitude;
 mod invert_binary_tree;
