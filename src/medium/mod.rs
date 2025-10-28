@@ -24,6 +24,7 @@ mod letter_combinations;
 mod longest_palindrome_substring;
 mod lowest_common_ancestor_of_binary_search_tree;
 mod lowest_common_ancestor_of_binary_tree;
+mod max_area_of_island;
 mod min_stack;
 mod number_of_islands;
 mod palindrome_partitioning;

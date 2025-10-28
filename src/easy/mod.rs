@@ -15,6 +15,7 @@ mod kth_largest_element_in_stream;
 mod length_of_last_word;
 mod longest_palindrome;
 mod majority_element;
+mod max_consecutive_ones;
 mod maximum_depth_of_binary_tree;
 mod maximum_wealth;
 mod merge_sorted_array;
