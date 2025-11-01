@@ -29,6 +29,7 @@ mod min_stack;
 mod number_of_islands;
 mod palindrome_partitioning;
 mod permutations;
+mod pow;
 mod product_except_self;
 mod right_side_view;
 mod rotate_image;
