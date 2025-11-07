@@ -5,6 +5,7 @@ mod construct_bst_from_preorder;
 mod construct_bt_from_inorder_and_postorder;
 mod construct_bt_from_preorder_and_inorder;
 mod container_with_the_most_water;
+mod count_primes;
 mod daily_temperature;
 mod evaluate_reverse_polish_notation;
 mod factorial_trailing_zeros;
