@@ -29,6 +29,7 @@ mod palindrome_number;
 mod pivot_index;
 mod plus_one;
 mod ransom_note;
+mod remove_element;
 mod same_tree;
 mod subtree_of_another_tree;
 mod two_sum;
