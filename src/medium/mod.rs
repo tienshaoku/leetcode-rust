@@ -1,4 +1,5 @@
 mod binary_tree_level_order_traversal;
+mod coin_change;
 mod combination_sum;
 mod combination_sum_two;
 mod construct_bst_from_preorder;
