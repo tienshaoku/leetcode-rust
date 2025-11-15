@@ -27,6 +27,7 @@ mod n_unique_integers_sum_zero;
 mod number_of_steps;
 mod palindrome_number;
 mod pascal_triangle;
+mod pascal_triangle_two;
 mod pivot_index;
 mod plus_one;
 mod ransom_note;
