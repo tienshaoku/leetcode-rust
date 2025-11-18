@@ -17,6 +17,7 @@ mod group_anagrams;
 mod house_robber;
 mod house_robber_two;
 mod is_valid_bst;
+mod jump_game;
 mod k_closest;
 mod kth_largest_element_in_array;
 mod kth_smallest;
