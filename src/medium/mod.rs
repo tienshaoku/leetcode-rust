@@ -48,5 +48,6 @@ mod task_scheduler;
 mod top_k_frequent;
 mod total_number_of_colored_cells;
 mod two_sum_two_array_sorted;
+mod unique_paths;
 mod valid_sudoku;
 mod word_search;
