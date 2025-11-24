@@ -30,6 +30,7 @@ mod lowest_common_ancestor_of_binary_search_tree;
 mod lowest_common_ancestor_of_binary_tree;
 mod max_area_of_island;
 mod maximum_subarray;
+mod min_path_sum;
 mod min_stack;
 mod min_sub_array_len;
 mod number_of_islands;
