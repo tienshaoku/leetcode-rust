@@ -8,6 +8,7 @@ mod construct_bt_from_preorder_and_inorder;
 mod container_with_the_most_water;
 mod count_primes;
 mod daily_temperature;
+mod edit_distance;
 mod evaluate_reverse_polish_notation;
 mod factorial_trailing_zeros;
 mod find_min_in_rotated_sorted_array;
