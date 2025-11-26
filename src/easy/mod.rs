@@ -13,6 +13,7 @@ mod guess_number;
 mod happy_number;
 mod highest_altitude;
 mod invert_binary_tree;
+mod is_subsequence;
 mod kth_largest_element_in_stream;
 mod length_of_last_word;
 mod longest_palindrome;
