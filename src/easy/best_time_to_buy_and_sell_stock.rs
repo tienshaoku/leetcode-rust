@@ -1,14 +1,13 @@
 fn best_time_to_buy_and_sell_stock(prices: Vec<i32>) -> i32 {
-    let mut res = 0;
-    let mut left = 0;
-    for right in 1..prices.len() {
-        res = res.max(prices[right] - prices[left]);
-
-        if prices[left] > prices[right] {
-            left = right;
+    let mut profit = 0;
+    let mut min = prices[0];
+    for i in 1..prices.len() {
+        if prices[i] < min {
+            min = prices[i];
         }
+        profit = profit.max(prices[i] - min);
     }
-    res
+    profit
 }
 
 #[cfg(test)]
