@@ -37,6 +37,7 @@ mod remove_element;
 mod same_tree;
 mod subtree_of_another_tree;
 mod two_sum;
+mod ugly_number;
 mod valid_anagram;
 mod valid_palindrome;
 mod valid_parentheses;
