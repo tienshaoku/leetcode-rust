@@ -6,6 +6,7 @@ mod check_if_array_is_sorted_and_rotated;
 mod climb_stairs;
 mod contain_duplicate;
 mod count_bits;
+mod count_partitions;
 mod diameter_of_binary_tree;
 mod find_numbers_with_even_digits;
 mod fizz_buzz;
