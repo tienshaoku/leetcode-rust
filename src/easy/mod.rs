@@ -4,7 +4,7 @@ mod binary_search;
 mod binary_search_preorder_traversal;
 mod check_if_array_is_sorted_and_rotated;
 mod climb_stairs;
-mod contain_duplicate;
+mod contains_duplicate;
 mod count_bits;
 mod count_partitions;
 mod diameter_of_binary_tree;
