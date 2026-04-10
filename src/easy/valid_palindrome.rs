@@ -1,8 +1,10 @@
 fn is_valid_palindrome(s: String) -> bool {
     let cleaned: Vec<char> = s
         .chars()
-        .filter(|c| c.is_alphanumeric())
-        .map(|c| c.to_ascii_lowercase())
+        .filter_map(|c| {
+            let c = c.to_ascii_lowercase();
+            c.is_ascii_alphanumeric().then_some(c)
+        })
         .collect();
 
     if cleaned.len() == 0 {

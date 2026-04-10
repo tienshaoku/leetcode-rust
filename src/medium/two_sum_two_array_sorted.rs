@@ -1,22 +1,15 @@
 fn two_sum_two(numbers: Vec<i32>, target: i32) -> Vec<i32> {
     use std::cmp::Ordering;
 
-    let mut left = 0;
-    let mut right = numbers.len() - 1;
-
-    let mut res = vec![];
+    let (mut left, mut right) = (0, numbers.len() - 1);
     while left < right {
         match (numbers[left] + numbers[right]).cmp(&target) {
-            Ordering::Equal => {
-                res.push(left as i32 + 1);
-                res.push(right as i32 + 1);
-                break;
-            }
+            Ordering::Equal => break,
             Ordering::Less => left += 1,
             _ => right -= 1,
         }
     }
-    res
+    Vec::from([left as i32 + 1, right as i32 + 1])
 }
 
 fn two_sum__two_slow(numbers: Vec<i32>, target: i32) -> Vec<i32> {
