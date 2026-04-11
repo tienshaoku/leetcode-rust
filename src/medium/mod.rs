@@ -50,6 +50,7 @@ mod ship_within_days;
 mod subsets;
 mod subsets_two;
 mod task_scheduler;
+mod three_sum;
 mod top_k_frequent;
 mod total_number_of_colored_cells;
 mod two_sum_two_array_sorted;
