@@ -1,4 +1,36 @@
 fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
+    let height = matrix.len();
+    let width = matrix[0].len();
+    let (mut t, mut b) = (0, height);
+
+    let (mut h, mut w);
+    while t < b {
+        h = t + (b - t) / 2;
+        if matrix[h][0] > target {
+            b = h;
+            continue;
+        } else if matrix[h][width - 1] < target {
+            t = h + 1;
+            continue;
+        }
+
+        let (mut l, mut r) = (0, width);
+        while l < r {
+            w = l + (r - l) / 2;
+            if matrix[h][w] == target {
+                return true;
+            } else if matrix[h][w] > target {
+                r = w;
+            } else {
+                l = w + 1;
+            }
+        }
+        return false;
+    }
+    false
+}
+
+fn search_matrix_longer(matrix: Vec<Vec<i32>>, target: i32) -> bool {
     use std::cmp::Ordering;
 
     let (mut top, mut bottom) = (0, matrix.len());
@@ -26,21 +58,6 @@ fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
             Ordering::Equal => return true,
             Ordering::Greater => left = mid + 1,
             _ => right = mid,
-        }
-    }
-    false
-}
-
-fn search_matrix_lean_but_slow(matrix: Vec<Vec<i32>>, target: i32) -> bool {
-    let (mut top, mut bottom) = (0, matrix.len());
-    while top < bottom {
-        let mid = top + (bottom - top) / 2;
-        if matrix[mid].contains(&target) {
-            return true;
-        } else if target < matrix[mid][0] {
-            bottom = mid;
-        } else {
-            top = mid + 1;
         }
     }
     false
@@ -75,5 +92,10 @@ mod search_matrix_test {
     #[test]
     fn search_matrix_test_3() {
         assert_eq!(search_matrix(vec![vec![1]], 1), true);
+    }
+
+    #[test]
+    fn search_matrix_test_4() {
+        assert_eq!(search_matrix(vec![vec![1]], 15), false);
     }
 }
