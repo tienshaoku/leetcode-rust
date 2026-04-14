@@ -24,6 +24,7 @@ mod is_valid_bst;
 mod jump_game;
 mod jump_game_two;
 mod k_closest;
+mod koko_eating_bananas;
 mod kth_largest_element_in_array;
 mod kth_smallest;
 mod length_of_longest_substring;
