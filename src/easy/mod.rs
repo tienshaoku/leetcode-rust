@@ -24,6 +24,7 @@ mod max_consecutive_ones;
 mod maximum_depth_of_binary_tree;
 mod maximum_wealth;
 mod merge_sorted_array;
+mod merge_two_list;
 mod min_cost_climbing_stairs;
 mod missing_number;
 mod n_unique_integers_sum_zero;

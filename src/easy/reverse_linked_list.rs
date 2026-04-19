@@ -1,4 +1,4 @@
-use crate::merge_two_sorted_lists::ListNode;
+use crate::linked_list::ListNode;
 
 fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     let mut last = None;
@@ -14,7 +14,7 @@ fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
 #[cfg(test)]
 mod reverse_list_test {
     use super::*;
-    use crate::merge_two_sorted_lists::to_list;
+    use crate::linked_list::to_list;
 
     #[test]
     fn reverse_list_test_1() {
