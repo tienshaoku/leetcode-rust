@@ -43,6 +43,7 @@ mod palindrome_partitioning;
 mod permutations;
 mod pow;
 mod product_except_self;
+mod reorder_list;
 mod right_side_view;
 mod rotate_image;
 mod search_a_2d_matrix;
