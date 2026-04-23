@@ -30,4 +30,10 @@ mod invert_tree_test {
         let input = to_full_tree(vec![2, 1, 3]);
         assert_eq!(invert_tree(input), to_full_tree(vec![2, 3, 1]));
     }
+
+    #[test]
+    fn invert_tree_test_3() {
+        let input = to_full_tree(vec![]);
+        assert_eq!(invert_tree(input), to_full_tree(vec![]));
+    }
 }
