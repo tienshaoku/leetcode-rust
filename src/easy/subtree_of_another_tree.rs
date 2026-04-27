@@ -6,7 +6,7 @@ fn is_subtree(
     root: Option<Rc<RefCell<TreeNode>>>,
     sub_root: Option<Rc<RefCell<TreeNode>>>,
 ) -> bool {
-    // compares the two entire trees, not just val, left & right
+    // TreeNode’s PartialEq compares val and also the left and right subtrees recursively
     if root == sub_root {
         return true;
     }
@@ -55,6 +55,25 @@ mod is_subtree_test {
                 to_sparse_tree(vec![Some(4), Some(1), Some(2)])
             ),
             false
+        );
+    }
+
+    #[test]
+    fn is_subtree_test_3() {
+        assert_eq!(
+            is_subtree(to_sparse_tree(vec![Some(1)]), to_sparse_tree(vec![Some(0)])),
+            false
+        );
+    }
+
+    #[test]
+    fn is_subtree_test_4() {
+        assert_eq!(
+            is_subtree(
+                to_sparse_tree(vec![Some(1), Some(1)]),
+                to_sparse_tree(vec![Some(1)])
+            ),
+            true
         );
     }
 }
