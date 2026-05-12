@@ -3,37 +3,12 @@ use std::cell::RefCell;
 use std::cmp::Ordering;
 use std::rc::Rc;
 
+// complicated but faster
 fn lowest_common_ancestor_of_binary_search_tree(
     root: Option<Rc<RefCell<TreeNode>>>,
     p: Option<Rc<RefCell<TreeNode>>>,
     q: Option<Rc<RefCell<TreeNode>>>,
 ) -> Option<Rc<RefCell<TreeNode>>> {
-    if let (Some(r_node), Some(q_node), Some(p_node)) = (root.clone(), p.clone(), q.clone()) {
-        let root_ref = r_node.borrow();
-        let root_val = root_ref.val;
-        let p_val = p_node.borrow().val;
-        let q_val = q_node.borrow().val;
-
-        if root_val > p_val && root_val > q_val {
-            lowest_common_ancestor_of_binary_search_tree(root_ref.left.clone(), p, q)
-        } else if root_val < p_val && root_val < q_val {
-            lowest_common_ancestor_of_binary_search_tree(root_ref.right.clone(), p, q)
-        } else {
-            root
-        }
-    } else {
-        None
-    }
-}
-
-fn lowest_common_ancestor_of_binary_search_tree_complicated(
-    root: Option<Rc<RefCell<TreeNode>>>,
-    p: Option<Rc<RefCell<TreeNode>>>,
-    q: Option<Rc<RefCell<TreeNode>>>,
-) -> Option<Rc<RefCell<TreeNode>>> {
-    let mut p_arr = vec![];
-    let mut q_arr = vec![];
-
     fn build_path_arr(
         root: Option<Rc<RefCell<TreeNode>>>,
         target: Option<Rc<RefCell<TreeNode>>>,
@@ -53,6 +28,8 @@ fn lowest_common_ancestor_of_binary_search_tree_complicated(
         }
     }
 
+    let mut p_arr = vec![];
+    let mut q_arr = vec![];
     build_path_arr(root.clone(), p.clone(), &mut p_arr);
     build_path_arr(root.clone(), q.clone(), &mut q_arr);
 
@@ -62,6 +39,29 @@ fn lowest_common_ancestor_of_binary_search_tree_complicated(
         }
     }
     None
+}
+
+fn lowest_common_ancestor_of_binary_search_tree_slow_easy(
+    root: Option<Rc<RefCell<TreeNode>>>,
+    p: Option<Rc<RefCell<TreeNode>>>,
+    q: Option<Rc<RefCell<TreeNode>>>,
+) -> Option<Rc<RefCell<TreeNode>>> {
+    if let (Some(r_node), Some(p_node), Some(q_node)) = (root.clone(), p.clone(), q.clone()) {
+        let root_ref = r_node.borrow();
+        let root_val = root_ref.val;
+        let p_val = p_node.borrow().val;
+        let q_val = q_node.borrow().val;
+
+        if root_val > p_val && root_val > q_val {
+            lowest_common_ancestor_of_binary_search_tree(root_ref.left.clone(), p, q)
+        } else if root_val < p_val && root_val < q_val {
+            lowest_common_ancestor_of_binary_search_tree(root_ref.right.clone(), p, q)
+        } else {
+            root
+        }
+    } else {
+        None
+    }
 }
 
 #[cfg(test)]
