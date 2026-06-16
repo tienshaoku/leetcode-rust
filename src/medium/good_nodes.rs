@@ -15,6 +15,7 @@ fn good_nodes(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         }
     }
 
+    // compare to i32::MIN s.t. root is always counted
     dfs(root, i32::MIN)
 }
 
@@ -84,5 +85,22 @@ mod good_nodes_test {
     #[test]
     fn good_nodes_test_3() {
         assert_eq!(good_nodes(to_sparse_tree(vec![Some(1)])), 1);
+    }
+
+    #[test]
+    fn good_nodes_test_4() {
+        assert_eq!(
+            good_nodes(to_sparse_tree(vec![
+                Some(-1),
+                None,
+                Some(4),
+                Some(10),
+                Some(8),
+                None,
+                None,
+                Some(4)
+            ])),
+            4
+        );
     }
 }
