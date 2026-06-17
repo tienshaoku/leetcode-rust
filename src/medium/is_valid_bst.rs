@@ -15,12 +15,13 @@ fn is_valid_bst(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
     let mut arr = vec![];
     to_arr(root, &mut arr);
 
-    for i in 0..(arr.len() - 1) {
-        if arr[i] >= arr[i + 1] {
-            return false;
-        }
-    }
-    true
+    // for i in 0..(arr.len() - 1) {
+    //     if arr[i] >= arr[i + 1] {
+    //         return false;
+    //     }
+    // }
+    // true
+    arr.windows(2).all(|w| w[0] < w[1])
 }
 
 #[cfg(test)]
