@@ -18,25 +18,46 @@ fn construct_bt_from_preorder_and_inorder(
         map: &HashMap<i32, usize>,
         offset: usize,
     ) -> Option<Rc<RefCell<TreeNode>>> {
-        let mut root = TreeNode::new(preorder[0]);
+        if preorder.is_empty() || inorder.is_empty() {
+            return None;
+        }
+
         let pos = *map.get(&preorder[0]).unwrap() - offset;
 
         let inorder_left = &inorder[0..pos];
         let inorder_right = &inorder[pos + 1..];
-
         let preorder_left = &preorder[1..1 + inorder_left.len()];
         let preorder_right = &preorder[1 + inorder_left.len()..];
 
-        if inorder_left.len() > 0 {
-            root.left = traverse(preorder_left, inorder_left, map, offset);
-        }
-        if inorder_right.len() > 0 {
-            root.right = traverse(preorder_right, inorder_right, map, offset + pos + 1);
-        }
+        let mut root = TreeNode::new(preorder[0]);
+        root.left = traverse(preorder_left, inorder_left, map, offset);
+        root.right = traverse(preorder_right, inorder_right, map, offset + pos + 1);
 
         Some(Rc::new(RefCell::new(root)))
     }
     traverse(&preorder, &inorder, &map, 0)
+}
+
+fn construct_bt_from_preorder_and_inorder_slow_but_memory_saving(
+    preorder: Vec<i32>,
+    inorder: Vec<i32>,
+) -> Option<Rc<RefCell<TreeNode>>> {
+    fn traverse(preorder: &[i32], inorder: &[i32]) -> Option<Rc<RefCell<TreeNode>>> {
+        if preorder.is_empty() || inorder.is_empty() {
+            return None;
+        }
+
+        let r_val = preorder[0];
+        let i = inorder.iter().position(|x| *x == r_val).unwrap();
+        let left = &inorder[..i];
+        let right = &inorder[i + 1..];
+        let mut root = TreeNode::new(r_val);
+        root.left = traverse(&preorder[1..1 + left.len()], &left);
+        root.right = traverse(&preorder[1 + left.len()..], &right);
+
+        return Some(Rc::new(RefCell::new(root)));
+    }
+    traverse(&preorder, &inorder)
 }
 
 //        3
