@@ -6,27 +6,27 @@ struct KthLargest {
 
 impl KthLargest {
     fn new(k: i32, nums: Vec<i32>) -> Self {
-        let range = if nums.len() < k as usize {
-            0..nums.len()
+        let mut nums = nums;
+        nums.sort();
+        let start_idx = if k as usize >= nums.len() {
+            0
         } else {
-            (nums.len() - k as usize)..nums.len()
+            nums.len() - k as usize
         };
-
-        let mut arr = nums.clone();
-        arr.sort();
-
         Self {
-            heap: arr[range].into_iter().map(|&x| -x).collect(),
+            heap: nums[start_idx..].into_iter().map(|&x| -x).collect(),
             k,
         }
     }
 
     fn add(&mut self, val: i32) -> i32 {
-        if self.heap.len() < self.k as usize {
+        if (self.heap.len() as i32) < self.k {
             self.heap.push(-val);
         } else if -val < *self.heap.peek().unwrap() {
-            self.heap.pop();
             self.heap.push(-val);
+            if self.heap.len() as i32 > self.k {
+                self.heap.pop();
+            }
         }
         -self.heap.peek().unwrap()
     }
