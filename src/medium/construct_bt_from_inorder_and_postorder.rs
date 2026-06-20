@@ -18,22 +18,22 @@ fn construct_bt_from_inorder_and_postorder(
         map: &HashMap<i32, usize>,
         offset: usize,
     ) -> Option<Rc<RefCell<TreeNode>>> {
-        let val: i32 = *postorder.last().unwrap();
-        let mut node = TreeNode::new(val);
+        if inorder.is_empty() || postorder.is_empty() {
+            return None;
+        }
 
-        let pos = *map.get(&val).unwrap() - offset;
+        let last: i32 = *postorder.last().unwrap();
+        let pos = *map.get(&last).unwrap() - offset;
+
         let inorder_left = &inorder[0..pos];
         let inorder_right = &inorder[pos + 1..];
-
-        let postorder_left = &postorder[0..inorder_left.len()];
+        let postorder_left = &postorder[..inorder_left.len()];
         let postorder_right = &postorder[inorder_left.len()..postorder.len() - 1];
 
-        if inorder_left.len() != 0 {
-            node.left = traverse(inorder_left, postorder_left, map, offset);
-        }
-        if inorder_right.len() != 0 {
-            node.right = traverse(inorder_right, postorder_right, map, offset + pos + 1);
-        }
+        let mut node: TreeNode = TreeNode::new(last);
+        node.left = traverse(inorder_left, postorder_left, map, offset);
+        node.right = traverse(inorder_right, postorder_right, map, offset + pos + 1);
+
         Some(Rc::new(RefCell::new(node)))
     }
     traverse(&inorder, &postorder, &map, 0)
