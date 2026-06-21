@@ -46,23 +46,23 @@ fn reorder_list(mut head: &mut Option<Box<ListNode>>) {
 #[cfg(test)]
 mod reorder_list_test {
     use super::*;
-    use crate::linked_list::to_list;
+    use crate::linked_list::to_linked_list;
 
     #[test]
     fn reorder_list_test_1() {
         let list = [1, 2, 3, 4];
         let expected = [1, 4, 2, 3];
-        let mut linked_list = to_list(&list);
+        let mut linked_list = to_linked_list(&list);
         reorder_list(&mut linked_list);
-        assert_eq!(linked_list, to_list(&expected));
+        assert_eq!(linked_list, to_linked_list(&expected));
     }
 
     #[test]
     fn reorder_list_test_2() {
         let list = [1, 2, 3, 4, 5];
         let expected = [1, 5, 2, 4, 3];
-        let mut linked_list = to_list(&list);
+        let mut linked_list = to_linked_list(&list);
         reorder_list(&mut linked_list);
-        assert_eq!(linked_list, to_list(&expected));
+        assert_eq!(linked_list, to_linked_list(&expected));
     }
 }

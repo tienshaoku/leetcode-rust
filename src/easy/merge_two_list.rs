@@ -26,7 +26,7 @@ fn merge_two_lists(
 #[cfg(test)]
 mod merge_two_lists_test {
     use super::*;
-    use crate::linked_list::to_list;
+    use crate::linked_list::to_linked_list;
 
     #[test]
     fn merge_two_lists_test_1() {
@@ -34,8 +34,8 @@ mod merge_two_lists_test {
         let list2 = [1, 3, 4];
         let expected = [1, 1, 2, 3, 4, 4];
         assert_eq!(
-            merge_two_lists(to_list(&list1), to_list(&list2)),
-            to_list(&expected)
+            merge_two_lists(to_linked_list(&list1), to_linked_list(&list2)),
+            to_linked_list(&expected)
         );
     }
 
@@ -45,8 +45,8 @@ mod merge_two_lists_test {
         let list2 = [0];
         let expected = [0];
         assert_eq!(
-            merge_two_lists(to_list(&list1), to_list(&list2)),
-            to_list(&expected)
+            merge_two_lists(to_linked_list(&list1), to_linked_list(&list2)),
+            to_linked_list(&expected)
         );
     }
 
@@ -56,8 +56,8 @@ mod merge_two_lists_test {
         let list2 = [];
         let expected = [];
         assert_eq!(
-            merge_two_lists(to_list(&list1), to_list(&list2)),
-            to_list(&expected)
+            merge_two_lists(to_linked_list(&list1), to_linked_list(&list2)),
+            to_linked_list(&expected)
         );
     }
 }
