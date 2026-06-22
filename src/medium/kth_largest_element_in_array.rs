@@ -2,17 +2,12 @@ fn kth_largest_element_in_array(nums: Vec<i32>, k: i32) -> i32 {
     use std::collections::BinaryHeap;
 
     let mut heap = BinaryHeap::new();
-    heap.push(-nums[0]);
-    for i in 1..nums.len() {
-        match (heap.len() < k as usize, -nums[i] < *heap.peek().unwrap()) {
-            (true, _) => {
-                heap.push(-nums[i]);
-            }
-            (false, true) => {
-                heap.pop();
-                heap.push(-nums[i]);
-            }
-            _ => (),
+    for i in nums {
+        if heap.len() < k as usize {
+            heap.push(-i);
+        } else if -i < *heap.peek().unwrap() {
+            heap.pop();
+            heap.push(-i);
         }
     }
     -*heap.peek().unwrap()
