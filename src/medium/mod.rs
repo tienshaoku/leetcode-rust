@@ -21,6 +21,7 @@ mod good_nodes;
 mod group_anagrams;
 mod house_robber;
 mod house_robber_two;
+mod implement_trie;
 mod is_valid_bst;
 mod jump_game;
 mod jump_game_two;
