@@ -3,17 +3,18 @@ use crate::vector::normalise;
 fn subsets_two(nums: Vec<i32>) -> Vec<Vec<i32>> {
     use std::collections::HashSet;
 
-    let mut arr = vec![vec![]];
+    let mut set: HashSet<Vec<i32>> = HashSet::new();
+    set.insert(vec![]);
+
     for i in nums {
-        let arr_clone = arr.clone();
-        for j in arr_clone {
-            let mut copy = j.clone();
-            copy.push(i);
-            copy.sort();
-            arr.push(copy);
+        let clone = set.clone();
+        for j in clone.iter() {
+            let mut tmp = j.clone();
+            tmp.push(i);
+            tmp.sort();
+            set.insert(tmp);
         }
     }
-    let set: HashSet<Vec<i32>> = arr.into_iter().collect();
     set.into_iter().collect()
 }
 
