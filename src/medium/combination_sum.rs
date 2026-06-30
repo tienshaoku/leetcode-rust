@@ -35,35 +35,32 @@ fn combination_sum(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
 
 fn combination_sum_duplicates(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
     use std::collections::HashSet;
-    fn traverse(candidates: &Vec<i32>, target: i32) -> Option<Vec<Vec<i32>>> {
-        if target == 0 {
-            return Some(vec![vec![]]);
-        } else if target < candidates[0] {
-            return None;
+
+    fn traverse(candidates: &Vec<i32>, target: i32, arr: &Vec<i32>, res: &mut HashSet<Vec<i32>>) {
+        if candidates.is_empty() {
+            if target == 0 {
+                res.insert(arr.to_vec());
+            }
+            return;
         }
 
-        let mut set = HashSet::new();
-        for &i in candidates {
-            if i > target {
-                break;
+        for i in candidates {
+            if *i > target {
+                continue;
             }
-            if let Some(vec) = traverse(candidates, target - i) {
-                for mut v in vec {
-                    v.push(i);
-                    v.sort();
-                    set.insert(v);
-                }
-            }
+            let rest = target - i;
+            let mut arr_clone = arr.clone();
+            arr_clone.push(*i);
+            arr_clone.sort();
+            let rest_candidates: Vec<i32> =
+                candidates.iter().filter(|x| **x <= rest).copied().collect();
+            traverse(&rest_candidates, rest, &arr_clone, res);
         }
-        Some(set.into_iter().collect())
     }
-    let mut cloned = candidates.clone();
-    cloned.sort();
-    if let Some(r) = traverse(&cloned, target) {
-        r
-    } else {
-        vec![]
-    }
+
+    let mut res = HashSet::new();
+    traverse(&candidates, target, &vec![], &mut res);
+    res.into_iter().collect()
 }
 
 #[cfg(test)]

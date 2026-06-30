@@ -12,9 +12,6 @@ fn combination_sum_two(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
             res.push(path.clone());
             return;
         }
-        if start_index >= candidates.len() {
-            return;
-        }
 
         for i in start_index..candidates.len() {
             let now = candidates[i];
@@ -37,9 +34,9 @@ fn combination_sum_two(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
     }
 
     let mut res = vec![];
-    let mut cloned = candidates.clone();
-    cloned.sort();
-    traverse(&cloned, target, 0, &mut res, &mut vec![]);
+    let mut candidates = candidates;
+    candidates.sort();
+    traverse(&candidates, target, 0, &mut res, &mut vec![]);
     res
 }
 
