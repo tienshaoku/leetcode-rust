@@ -1,7 +1,4 @@
-pub fn normalise(mut v: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
-    for inner in v.iter_mut() {
-        inner.sort();
-    }
+pub fn normalise<T: Ord>(mut v: Vec<T>) -> Vec<T> {
     v.sort();
     v
 }
