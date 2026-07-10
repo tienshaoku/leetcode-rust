@@ -1,30 +1,31 @@
 fn rob_two(nums: Vec<i32>) -> i32 {
+    use std::cmp::Ordering;
+
     if nums.len() == 1 {
         return nums[0];
     }
 
     fn rob(nums: &[i32]) -> i32 {
-        if nums.len() == 1 {
-            return nums[0];
+        let length = nums.len();
+        match length {
+            1 => return nums[0],
+            2 => return nums[0].max(nums[1]),
+            _ => (),
         }
 
-        let mut arr = vec![0; nums.len()];
-        for i in (0..nums.len()).rev() {
-            let mut now = nums[i];
-            if i + 2 < nums.len() {
-                if i + 3 < nums.len() && arr[i + 2] < arr[i + 3] {
-                    now += arr[i + 3];
-                } else {
-                    now += arr[i + 2]
-                }
-            }
-            arr[i] = now;
+        let mut res = vec![0; length];
+        for i in 0..length {
+            res[i] = match i.cmp(&2) {
+                Ordering::Less => nums[i],
+                Ordering::Equal => nums[i] + res[0],
+                Ordering::Greater => nums[i] + res[i - 2].max(res[i - 3]),
+            };
         }
-        arr[0].max(arr[1])
+        res[length - 1].max(res[length - 2])
     }
 
     let one = rob(&nums[..nums.len() - 1]);
-    let two = rob(&nums[1..nums.len()]);
+    let two = rob(&nums[1..]);
     one.max(two)
 }
 
