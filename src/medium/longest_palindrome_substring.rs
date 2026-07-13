@@ -1,4 +1,28 @@
 fn longest_palindrome_substring(s: String) -> String {
+    let length = s.len();
+    let mut arr = vec![vec![false; length]; length];
+
+    let chars = s.chars().collect::<Vec<char>>();
+    let (mut left, mut right) = (0, 0);
+    // arr[y][x] needs arr[y+1][x-1] first, so fill by increasing gap
+    for gap in 0..length {
+        for y in 0..length - gap {
+            let x = y + gap;
+            arr[y][x] = match gap {
+                0 => true,
+                1 => chars[y] == chars[x],
+                _ => chars[y] == chars[x] && arr[y + 1][x - 1],
+            };
+            if arr[y][x] {
+                left = y;
+                right = x;
+            }
+        }
+    }
+    chars[left..=right].iter().collect()
+}
+
+fn longest_palindrome_substring_2_pointers(s: String) -> String {
     if s.len() == 1 {
         return s;
     }
@@ -42,7 +66,7 @@ mod longest_palindrome_substring_test {
 
     #[test]
     fn longest_palindrome_substring_test_1() {
-        assert_eq!(longest_palindrome_substring(String::from("babad")), "bab");
+        assert_eq!(longest_palindrome_substring(String::from("babad")), "aba");
     }
 
     #[test]
@@ -53,5 +77,23 @@ mod longest_palindrome_substring_test {
     #[test]
     fn longest_palindrome_substring_test_3() {
         assert_eq!(longest_palindrome_substring(String::from("a")), "a");
+    }
+
+    #[test]
+    fn longest_palindrome_substring_test_4() {
+        assert_eq!(longest_palindrome_substring(String::from("aaaa")), "aaaa");
+    }
+
+    #[test]
+    fn longest_palindrome_substring_test_5() {
+        assert_eq!(longest_palindrome_substring(String::from("abcbe")), "bcb");
+    }
+
+    #[test]
+    fn longest_palindrome_substring_test_6() {
+        assert_eq!(
+            longest_palindrome_substring(String::from("aacabdkacaa")),
+            "aca"
+        );
     }
 }
