@@ -4,6 +4,8 @@ fn longest_palindrome_substring(s: String) -> String {
 
     let chars = s.chars().collect::<Vec<char>>();
     let (mut left, mut right) = (0, 0);
+    // chars[y] == chars[x] checks if the outer is the same
+    // arr[y+1][x-1] checks if excluding the outer crust of length 2, the inner is the same
     // arr[y][x] needs arr[y+1][x-1] first, so fill by increasing gap
     for gap in 0..length {
         for y in 0..length - gap {
@@ -21,6 +23,12 @@ fn longest_palindrome_substring(s: String) -> String {
     }
     chars[left..=right].iter().collect()
 }
+
+//   a a c a ...
+// a t t f f
+// a   t f t
+// c     t f
+// a       t
 
 fn longest_palindrome_substring_2_pointers(s: String) -> String {
     if s.len() == 1 {
