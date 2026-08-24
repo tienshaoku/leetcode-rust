@@ -1,24 +1,25 @@
 fn coin_change(coins: Vec<i32>, amount: i32) -> i32 {
     let amount = amount as usize;
-    let mut table = vec![i32::MAX; amount + 1];
-    table[0] = 0;
+    // use i32::MAX instead of 0 to differentiate "not handled" from "number of coins"
+    let mut arr = vec![i32::MAX; amount as usize + 1];
+    arr[0] = 0;
 
     for i in 1..=amount {
         for &c in &coins {
             let c = c as usize;
-            if c <= i {
-                let prev = table[i - c];
+            if i >= c {
+                let prev = arr[i - c];
                 if prev != i32::MAX {
-                    table[i] = table[i].min(prev + 1);
+                    arr[i] = arr[i].min(prev + 1);
                 }
             }
         }
     }
 
-    if table[amount] == i32::MAX {
+    if arr[amount] == i32::MAX {
         -1
     } else {
-        table[amount]
+        arr[amount]
     }
 }
 
@@ -39,5 +40,20 @@ mod coin_change_test {
     #[test]
     fn coin_change_test_3() {
         assert_eq!(coin_change(vec![1], 0), 0);
+    }
+
+    #[test]
+    fn coin_change_test_4() {
+        assert_eq!(coin_change(vec![1], 2), 2);
+    }
+
+    #[test]
+    fn coin_change_test_5() {
+        assert_eq!(coin_change(vec![186, 419, 83, 408], 6249), 20);
+    }
+
+    #[test]
+    fn coin_change_test_6() {
+        assert_eq!(coin_change(vec![2, 3, 7], 29), 6);
     }
 }
