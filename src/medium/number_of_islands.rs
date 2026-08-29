@@ -1,38 +1,40 @@
 fn number_of_islands(grid: Vec<Vec<char>>) -> i32 {
-    fn dfs(grid: &mut Vec<Vec<char>>, path: (usize, usize), rows: usize, cols: usize) {
-        if path.0 == rows || path.1 == cols || grid[path.0][path.1] == '0' {
+    fn dfs(grid: &mut Vec<Vec<char>>, x: usize, y: usize) {
+        if x == grid[0].len() || y == grid.len() || grid[y][x] == '0' {
             return;
         }
-        grid[path.0][path.1] = '0';
+        grid[y][x] = '0';
 
-        dfs(grid, (path.0 + 1, path.1), rows, cols);
-        dfs(grid, (path.0, path.1 + 1), rows, cols);
-        if path.0 != 0 {
-            dfs(grid, (path.0 - 1, path.1), rows, cols);
+        dfs(grid, x + 1, y);
+        dfs(grid, x, y + 1);
+        if x > 0 {
+            dfs(grid, x - 1, y);
         }
-        if path.1 != 0 {
-            dfs(grid, (path.0, path.1 - 1), rows, cols);
+        if y > 0 {
+            dfs(grid, x, y - 1);
         }
     }
 
-    let rows = grid.len();
-    let cols = grid[0].len();
+    let mut count = 0;
     let mut grid = grid;
-    let mut res = 0;
-    for i in 0..grid.len() {
-        for j in 0..grid[0].len() {
-            if grid[i][j] == '1' {
-                res += 1;
-                dfs(&mut grid, (i, j), rows, cols);
+    for y in 0..grid.len() {
+        for x in 0..grid[0].len() {
+            if grid[y][x] == '1' {
+                count += 1;
+                dfs(&mut grid, x, y);
             }
         }
     }
-    res
+    count
 }
 
 // 1, 0, 1
 // 1, 1, 1
 // 1, 0, 1
+
+// 1, 1, 1
+// 0, 1, 0
+// 1, 1, 1
 
 #[cfg(test)]
 mod number_of_islands_test {

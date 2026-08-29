@@ -1,35 +1,33 @@
 fn max_area_of_island(grid: Vec<Vec<i32>>) -> i32 {
-    fn dfs(grid: &mut Vec<Vec<i32>>, path: (usize, usize), rows: usize, cols: usize) -> i32 {
-        if path.0 == rows || path.1 == cols || grid[path.0][path.1] == 0 {
-            return 0;
+    fn dfs(grid: &mut Vec<Vec<i32>>, x: usize, y: usize, area: &mut i32) {
+        if x == grid[0].len() || y == grid.len() || grid[y][x] == 0 {
+            return;
         }
-        grid[path.0][path.1] = 0;
+        grid[y][x] = 0;
+        *area += 1;
 
-        let mut area = 1;
-
-        area += dfs(grid, (path.0 + 1, path.1), rows, cols);
-        area += dfs(grid, (path.0, path.1 + 1), rows, cols);
-        if path.0 != 0 {
-            area += dfs(grid, (path.0 - 1, path.1), rows, cols);
+        dfs(grid, x + 1, y, area);
+        dfs(grid, x, y + 1, area);
+        if x > 0 {
+            dfs(grid, x - 1, y, area);
         }
-        if path.1 != 0 {
-            area += dfs(grid, (path.0, path.1 - 1), rows, cols);
+        if y > 0 {
+            dfs(grid, x, y - 1, area);
         }
-        area
     }
 
-    let rows = grid.len();
-    let cols = grid[0].len();
+    let mut area = 0;
     let mut grid = grid;
-    let mut res = 0;
-    for i in 0..grid.len() {
-        for j in 0..grid[0].len() {
-            if grid[i][j] == 1 {
-                res = res.max(dfs(&mut grid, (i, j), rows, cols));
+    for y in 0..grid.len() {
+        for x in 0..grid[0].len() {
+            if grid[y][x] == 1 {
+                let mut tmp = 0;
+                dfs(&mut grid, x, y, &mut tmp);
+                area = area.max(tmp);
             }
         }
     }
-    res
+    area
 }
 
 #[cfg(test)]

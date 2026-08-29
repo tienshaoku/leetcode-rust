@@ -25,6 +25,7 @@ mod house_robber;
 mod house_robber_two;
 mod implement_trie;
 mod is_valid_bst;
+mod islands_and_treasure;
 mod jump_game;
 mod jump_game_two;
 mod k_closest;
