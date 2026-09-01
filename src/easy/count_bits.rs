@@ -1,23 +1,7 @@
 fn count_bits(n: i32) -> Vec<i32> {
     let mut res = vec![0; n as usize + 1];
-    for i in 1..=n as usize {
+    for i in 1..n as usize + 1 {
         res[i] = res[i >> 1] + (i & 1) as i32;
-    }
-    res
-}
-
-fn count_bits_complicated(n: i32) -> Vec<i32> {
-    let mut power = 1;
-    let mut res = vec![0; n as usize + 1];
-    for i in 1..=n as usize {
-        if i == power * 2 {
-            power *= 2;
-            res[i] = 1;
-        } else if i > power {
-            res[i] = res[i - power] + res[power];
-        } else {
-            res[i] = 1;
-        }
     }
     res
 }
