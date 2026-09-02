@@ -1,27 +1,7 @@
 fn missing_number(nums: Vec<i32>) -> i32 {
-    let n = nums.len();
-    let mut sum = (n * (n + 1) / 2) as i32;
-    for i in nums {
-        sum -= i;
-    }
-    sum as i32
+    let n = nums.len() as i32;
+    (n + 1) * n / 2 - nums.iter().sum::<i32>()
 }
-
-// fn missing_number_unnecessary_binary_search(mut nums: Vec<i32>) -> i32 {
-//     nums.sort();
-
-//     let (mut left, mut right) = (0, nums.len());
-//     while left < right {
-//         let mid = left + (right - left) / 2;
-
-//         if nums[mid] > mid as i32 {
-//             right = mid;
-//         } else {
-//             left = mid + 1;
-//         }
-//     }
-//     left as i32
-// }
 
 #[cfg(test)]
 mod missing_number_test {
