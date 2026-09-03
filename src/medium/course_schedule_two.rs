@@ -1,36 +1,32 @@
 fn course_schedule_two(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> Vec<i32> {
-    use std::collections::{HashMap, VecDeque};
-    let mut map: HashMap<i32, Vec<i32>> = HashMap::new();
+    use std::collections::VecDeque;
+
+    let mut arr = vec![vec![]; num_courses as usize];
     let mut pre_count = vec![0; num_courses as usize];
     for p in prerequisites {
-        if p.len() != 2 {
-            continue;
+        if p.len() == 2 {
+            arr[p[1] as usize].push(p[0]);
+            pre_count[p[0] as usize] += 1;
         }
-        map.entry(p[1]).or_insert(vec![]).push(p[0]);
-        pre_count[p[0] as usize] += 1;
     }
 
     let mut queue = VecDeque::new();
-    for i in 0..pre_count.len() {
-        if pre_count[i] == 0 {
-            queue.push_back(i as i32);
+    for i in 0..num_courses {
+        if pre_count[i as usize] == 0 {
+            queue.push_back(i);
         }
     }
 
     let mut path = vec![];
     while let Some(i) = queue.pop_front() {
         path.push(i);
-
-        if let Some(vec) = map.get(&i) {
-            for &v in vec {
-                pre_count[v as usize] -= 1;
-                if pre_count[v as usize] == 0 {
-                    queue.push_back(v);
-                }
+        for &v in &arr[i as usize] {
+            pre_count[v as usize] -= 1;
+            if pre_count[v as usize] == 0 {
+                queue.push_back(v);
             }
         }
     }
-
     if path.len() as i32 == num_courses {
         path
     } else {
