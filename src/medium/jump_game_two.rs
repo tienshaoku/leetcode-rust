@@ -10,8 +10,10 @@ fn jump_game_two(nums: Vec<i32>) -> i32 {
     for i in 0..nums.len() - 1 {
         farthest = farthest.max(i + nums[i] as usize);
 
+        // increments here as previous jumps can get us the farthest to current_end
         if i == current_end {
             jumps += 1;
+            // as farthest considers (i + nums[i]), can safely update
             current_end = farthest;
 
             if current_end >= nums.len() - 1 {

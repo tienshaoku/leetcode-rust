@@ -2,37 +2,14 @@ fn jump_game(nums: Vec<i32>) -> bool {
     let mut farthest = 0;
 
     for i in 0..nums.len() {
-        if i > farthest {
-            return false;
+        if farthest >= i {
+            farthest = farthest.max(i + nums[i] as usize);
         }
-
-        farthest = farthest.max(i + nums[i] as usize);
-
         if farthest >= nums.len() - 1 {
             return true;
         }
     }
     false
-}
-
-fn jump_game_slow(nums: Vec<i32>) -> bool {
-    let mut arr = vec![false; nums.len()];
-    arr[0] = true;
-    let mut i = 0;
-    while i < nums.len() && arr[i] {
-        let mut current = nums[i];
-        if (i + current as usize) >= nums.len() - 1 {
-            return true;
-        }
-        while current > 0 {
-            if (i + current as usize) < nums.len() {
-                arr[i + current as usize] = true;
-            }
-            current -= 1;
-        }
-        i += 1;
-    }
-    *arr.last().unwrap()
 }
 
 #[cfg(test)]
@@ -67,5 +44,10 @@ mod jump_game_test {
     #[test]
     fn jump_game_test_6() {
         assert_eq!(jump_game(vec![0, 2, 3]), false);
+    }
+
+    #[test]
+    fn jump_game_test_7() {
+        assert_eq!(jump_game(vec![2, 5, 0, 0]), true);
     }
 }
