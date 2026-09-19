@@ -93,4 +93,16 @@ mod pacific_atlantic_test {
             [[0, 0], [0, 1], [1, 0], [1, 1], [2, 0], [2, 1]]
         );
     }
+
+    #[test]
+    fn pacific_atlantic_test_4() {
+        assert_eq!(
+            normalise(pacific_atlantic(vec![
+                vec![1, 2, 3],
+                vec![8, 9, 4],
+                vec![7, 6, 5]
+            ])),
+            [[0, 2], [1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2]]
+        );
+    }
 }
