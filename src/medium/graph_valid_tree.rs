@@ -1,4 +1,48 @@
 fn graph_valid_tree(n: i32, edges: Vec<Vec<i32>>) -> bool {
+    let n = n as usize;
+    if n - 1 != edges.len() {
+        return false;
+    }
+
+    fn find_root(arr: &mut Vec<usize>, target: usize) -> usize {
+        if arr[target] == target {
+            return target;
+        }
+
+        let mut root = target;
+        while arr[root] != root {
+            root = arr[root];
+        }
+
+        let mut current = target;
+        while arr[current] != current {
+            let tmp = arr[current];
+            arr[current] = root;
+            current = tmp;
+        }
+        root
+    }
+
+    let mut arr: Vec<usize> = (0..n).collect();
+    let mut size = vec![1; n];
+    for vec in edges {
+        let f_root = find_root(&mut arr, vec[0] as usize);
+        let s_root = find_root(&mut arr, vec[1] as usize);
+        if f_root == s_root {
+            return false;
+        }
+        if size[f_root] < size[s_root] {
+            arr[f_root] = s_root;
+            size[s_root] += size[f_root];
+        } else {
+            arr[s_root] = f_root;
+            size[f_root] += size[s_root];
+        }
+    }
+    true
+}
+
+fn graph_valid_tree_unoptimised(n: i32, edges: Vec<Vec<i32>>) -> bool {
     let n: usize = n as usize;
     if n - 1 != edges.len() {
         return false;
