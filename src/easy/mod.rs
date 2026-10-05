@@ -25,6 +25,7 @@ mod max_ascending_sum;
 mod max_consecutive_ones;
 mod maximum_depth_of_binary_tree;
 mod maximum_wealth;
+mod meeting_rooms;
 mod merge_sorted_array;
 mod merge_two_list;
 mod min_cost_climbing_stairs;
